@@ -1,0 +1,65 @@
+{% extends 'template_base/ClientBase.html' %}
+{% block page_title %} PROJECTS {% endblock %}
+{% set active_page = "projects" %}
+
+{% block custom_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/projectspage/projects-page.css') }}">
+{% endblock %}
+
+
+{% block client_body %}
+<div class="container-fluid projects-page-main py-5 pl-5">
+    <div class="pl-5">
+        <h1 style="margin-top:150px;font-weight:bolder;color: #ffffff;">Our Projects</h1>
+        <p style="color:#faba00; font-weight:bold !important;">
+            <a href="{{ url_for('index') }}" style="color:#faba00; text-decoration: none;">Home</a> | <a href="#" style="color:#faba00; text-decoration: none;">Projects</a>
+        </p>
+    </div>
+</div>
+
+<div class="container-fluid py-5">
+    <h1 class="w-100 text-center">Latest Projects</h1>
+</div>
+
+<div class="container pb-5">
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-center">
+            <div class="col-md-3">
+                <img class="d-block w-100 img-thumbnail" src="{{ url_for('static', filename = 'images/IMG_7061.jpg') }}" alt="Second slide">
+            </div>
+            <div class="col-md-3">
+                <img class="d-block w-100 img-thumbnail" src="{{ url_for('static', filename = 'images/IMG_7092.jpg') }}" alt="Second slide">
+            </div>
+            <div class="col-md-3">
+                <img class="d-block w-100 img-thumbnail" src="{{ url_for('static', filename = 'images/IMG_7228.jpg') }}" alt="Second slide">
+            </div>
+        </div>
+        <div class="col-md-12 d-flex justify-content-center my-4">
+            <div class="col-md-3">
+                <img class="d-block w-100 img-thumbnail" src="{{ url_for('static', filename = 'images/IMG_7180.jpg') }}" alt="Second slide">
+            </div>
+            <div class="col-md-3">
+                <img class="d-block w-100 img-thumbnail" src="{{ url_for('static', filename = 'images/IMG_7083.jpg') }}" alt="Second slide">
+            </div>
+            <div class="col-md-3">
+                <img class="d-block w-100 img-thumbnail" src="{{ url_for('static', filename = 'images/IMG_7109.jpg') }}" alt="Second slide">
+            </div>
+        </div>
+        <div class="col-md-12 d-flex justify-content-center">
+            <div class="col-md-3">
+                <img class="d-block w-100 img-thumbnail" src="{{ url_for('static', filename = 'images/IMG_7253.jpg') }}" alt="Second slide">
+            </div>
+            <div class="col-md-3">
+                <img class="d-block w-100 img-thumbnail" src="{{ url_for('static', filename = 'images/IMG_7257.jpg') }}" alt="Second slide">
+            </div>
+            <div class="col-md-3">
+                <img class="d-block w-100 img-thumbnail" src="{{ url_for('static', filename = 'images/IMG_7214.jpg') }}" alt="Second slide">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block custom_scripts %}
+<script src="{{ url_for('static', filename='js/index-page-script.js') }}"></script>
+{% endblock %}

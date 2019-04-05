@@ -1,0 +1,13 @@
+.ns-footer-menu li a i{
+    font-size:27px;
+}
+
+.ns-footer-menu li a{
+    text-decoration:none !important;
+    color:white;
+    font-weight:bold;
+}
+
+.ns-footer-menu li a:hover{
+    color:#faba00;
+}

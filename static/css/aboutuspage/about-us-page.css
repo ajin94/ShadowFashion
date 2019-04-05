@@ -1,0 +1,21 @@
+.aboutus-page-main{
+    background-image: linear-gradient( rgba(0,0,0,.65), rgba(0,0,0,.65) ), url('../../images/img13.jpg');
+    background-size: cover;
+    min-height:70vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.projectflow{
+    background-image: linear-gradient( rgba(0,0,0,.65), rgba(0,0,0,.65) ), url('../../images/img14.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.process-cards{
+    background-color: rgba(255, 255, 255, 0.71);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+

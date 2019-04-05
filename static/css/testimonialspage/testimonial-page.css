@@ -1,0 +1,31 @@
+.testimonial-card-container div{
+    display:inline-block;
+}
+
+.carousel-indicators li.active{
+    background-color:#faba00 !important;
+}
+
+.carousel-indicators li{
+    background-color: black !important;
+}
+
+#testimonials-carousel{
+    height:60vh !important;
+}
+
+.testimonial-comment-button{
+    border-radius: 0px !important;
+    background-color: #faba00;
+    color: white;
+    font-weight: bold;
+}
+
+.testimonials-page-main{
+    background-image: linear-gradient( rgba(0, 0, 0, 0.65), rgba(0,0,0,0.65) ), url(../../images/img12.jpg);
+    background-size: cover;
+    min-height:70vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
