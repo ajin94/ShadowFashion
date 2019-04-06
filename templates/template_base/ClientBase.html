@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/common/common.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/navigation/main-navigation.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer/sj-footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common/style2.css') }}">
     {% block custom_styles %} {% endblock %}
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,66 +23,92 @@
     <title>{% block page_title %} {% endblock %}</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-md bg-light navbar-dark nav-custom-bg-color sticky-top position-fixed px-md-5 w-100 ">
-    <a class="navbar-brand font-weight-bold" id="cmp-name" href="#">
-         <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="logo" style="height:60px;">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-            style="background-color: #1f2563" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <a class="navbar-brand hidden" href="#">
-            <img src="{{ url_for('static', filename='images/sj-lg-3.png') }}" alt="logo" class="w-100 h-100">
-        </a>
-        <ul class="navbar-nav ml-auto text-uppercase font-weight-bold">
-            <li class="nav-item">
-                <a class="nav-link {{ 'active' if active_page == 'index' else '' }}"
-                   href="{{ url_for('index') }}">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ 'active' if active_page == 'projects' else '' }}"
-                   href="{{ url_for('projects') }}">Projects</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ 'active' if active_page == 'testimonials' else '' }}"
-                   href="{{ url_for('testimonials') }}">Testimonials</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ 'active' if active_page == 'about' else '' }}"
-                   href="{{ url_for('about') }}">About Us</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-{% block client_body%} {% endblock %}
-<div class="container-fluid sj-footer c-p-bg-16181be6">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 mt-4">
-                <ul class="list-inline w-100 mt-md-5 mb-md-4 text-center
-                ml-sm-auto ml-xs-auto  mr-sm-auto mr-xs-auto ns-footer-menu pr-md-4">
-                    <li class="list-inline-item"> <a href="#"><i class="fa fa-instagram"></i></a></li>
-                    <li class="list-inline-item"> <a href="#"><i class="fa fa-twitter-square"></i></a></li>
-                    <li class="list-inline-item"> <a href="#"><i class="fa fa-facebook-square"></i></a></li>
-                    <li class="list-inline-item"> <a href="#"><i class="fa fa-google"></i></a></li>
-                </ul>
+<div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img class="" src="{{ url_for('static', filename = 'images/IMG_7214.jpg') }}" />
             </div>
-            <div class="col-xs-12 col-sm-12">
-                <ul class="list-inline w-100 text-right mt-md-3 mb-md-4 ns-footer-menu text-center ">
-                    <li class="list-inline-item"> <a href="{{ url_for('index') }}">HOME</a></li>
-                    <li class="list-inline-item"> <a href="{{ url_for('projects') }}">PROJECTS</a></li>
-                    <li class="list-inline-item"> <a href="{{ url_for('testimonials') }}">TESTIMONIALS</a></li>
-                    <li class="list-inline-item"> <a href="{{ url_for('about') }}">ABOUT US</a></li>
-                </ul>
+
+            <ul class="list-unstyled components">
+                <p>Dummy Heading</p>
+                <li class="{{ 'active' if active_page == 'home' else '' }}">
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Categories</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">menu 1</a>
+                        </li>
+                        <li>
+                            <a href="#">menu 2</a>
+                        </li>
+                        <li>
+                            <a href="#">menu 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            {% block client_body%} {% endblock %}
+
             </div>
-        </div>
-        <hr style="background-color:white; margin:0px;">
-        <div class="row">
-            <p class="w-100 text-center mt-3 text-white">&copy; Copytight to MangaloreXpress</p>
-        </div>
     </div>
-</div>
 </body>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -97,5 +121,19 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+</script>
 {% block custom_scripts %} {% endblock %}
 </html>
