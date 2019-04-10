@@ -52,11 +52,15 @@
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							Help & FAQs
 						</a>
-
+                        {% if template_data['user-name'] %}
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							My Account
 						</a>
-
+                        {% else %}
+						<a class="flex-c-m trans-04 p-lr-25" data-toggle="modal" data-target="#login_signup_modal">
+							Login
+						</a>
+                        {% endif %}
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							EN
 						</a>
@@ -245,6 +249,38 @@
 
 {% endblock %}
 
+
+    <!-- modal -->
+
+    <div class="modal fade" id="login_signup_modal" tabindex="-1" role="dialog" aria-labelledby="login_signup_modal_label" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="margin-top:30vh !important;">
+            <div class="modal-content" style="border-radius:0px;">
+                <div class="modal-header" style="border-bottom:0px;">
+                    <h5 class="modal-title" id="login_signup_modal_label">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="email`">Email address</label>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <button type="button" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+                <div class="modal-footer" style="border-top:0px;">
+                    <p>New user ? <a href="#">SignUp.</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <!--===============================================================================================-->
 	<script src="{{ url_for('static', filename='res/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
