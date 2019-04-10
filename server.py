@@ -12,19 +12,10 @@ def index():
     return render_template('client/index.html', template_data=template_arguments)
 
 
-@sfapp.route('/projects')
-def projects():
-    return render_template('client/projects.html')
+@sfapp.route('/signup')
+def signup():
+    return render_template('auth/signup.html')
 
-
-@sfapp.route('/testimonials')
-def testimonials():
-    return render_template('client/testimonials.html')
-
-
-@sfapp.route('/about')
-def about():
-    return render_template('client/aboutus.html')
 
 if __name__ == '__main__':
     sfapp.secret_key = '6wfwef6ASDW676w6QDWD6748wd((FD'
