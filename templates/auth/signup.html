@@ -2,14 +2,23 @@
 
 {% set active_page = "signup" %}
 
-{% block page_title %} HOME {% endblock %}
+{% block page_title %} SignUp {% endblock %}
 
 {% block custom_styles %}
 {% endblock %}
 
 
 {% block client_body %}
-    <h2 class="w-100 mb-5">SignUp</h2>
+    <div class="row">
+        <div class="col-5">
+            <h2 class="w-100 mb-5">SignUp</h2>
+        </div>
+        <div class="col-5">
+            <h2 class="w-100 mb-5 text-right">
+                <a href="{{ url_for('index') }}"><i class="fa fa-home"></i></a>
+            </h2>
+        </div>
+    </div>
     <div class="">
         <form>
             <div class="form-row">
@@ -66,9 +75,6 @@
                     <label class="form-check-label" for="terms">
                         Agree to terms and conditions
                     </label>
-{#                    <div class="invalid-feedback">#}
-{#                        You must agree before submitting.#}
-{#                    </div>#}
                 </div>
             </div>
             <button class="btn btn-primary" type="submit">SignUp</button>
