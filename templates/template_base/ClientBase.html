@@ -178,9 +178,15 @@
 							Help & FAQs
 						</a>
 
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
+					{% if template_data['user-name'] %}
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							My Account
 						</a>
+                        		{% else %}
+						<a class="flex-c-m trans-04 p-lr-25" data-toggle="modal" data-target="#login_signup_modal">
+							Login
+						</a>
+                        		{% endif %}
 
 						<a href="#" class="flex-c-m p-lr-10 trans-04">
 							EN
