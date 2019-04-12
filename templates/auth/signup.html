@@ -81,3 +81,7 @@
         </form>
     </div>
 {% endblock %}
+
+{% block custom_script %}
+<script src="{{ url_for('static', filename = '/res/js/signup-script.js') }}"/>
+{% endblock %}
