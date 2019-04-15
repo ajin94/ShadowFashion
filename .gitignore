@@ -1,3 +1,4 @@
 .idea/
 static/images/logo.psd
 static/images/
+__pycache__/

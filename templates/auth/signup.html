@@ -20,53 +20,101 @@
         </div>
     </div>
     <div class="">
-        <form>
+        <form id="signup-form" action="{{ url_for('validate_and_add_user') }}" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <div class="form-row">
+                <div class="col-md-10 mb-3">
+                    <label for="account_type">Sign Up For</label>
+                    <select class="form-control" id="account_type" name="account_type">
+                        <option value="0">Select An Account Type</option>
+                        <option value="1">Customer Account</option>
+                        <option value="2">Beauty Pageant</option>
+                        <option value="3">Blogger</option>
+                    </select>
+                </div>
+            </div>
             <div class="form-row">
                 <div class="col-md-5 mb-3">
                     <label for="fname">First name</label>
-                    <input type="text" class="form-control" id="fname" placeholder="First name" required>
+                    <input type="text" class="form-control" id="fname" name="fname" placeholder="First name" required>
                 </div>
                 <div class="col-md-5 mb-3">
                     <label for="sname">Last name</label>
-                    <input type="text" class="form-control" id="sname" placeholder="Second name" required>
+                    <input type="text" class="form-control" id="sname" name="sname" placeholder="Second name" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-10 mb-3">
+                    <label for="uname">User Name</label>
+                    <input type="text" class="form-control" id="uname" name="uname" placeholder="User Name for the account" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-3 mb-3">
+                    <label for="gender">Gender</label>
+                    <select class="form-control" id="gender" name="gender">
+                        <option>Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="col-md-7 mb-3">
+                    <label for="dob">D.O.B</label>
+                    <input type="date" class="form-control" id="dob" name="dob" placeholder="Date Of Birth" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-md-10 mb-3">
                     <label for="email">Email ID</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email ID" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email ID" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-md-10 mb-3">
                     <label for="phone">Phone Number</label>
-                    <input type="text" class="form-control" id="phone" placeholder="Phone No." required>
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone No." required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-md-10 mb-3">
                     <label for="st">Street/Apt.</label>
-                    <input type="text" class="form-control" id="st" placeholder="Street / Apt." required>
+                    <input type="text" class="form-control" id="st" name="apt_street_name" placeholder="Street / Apt." required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-md-5 mb-3">
-                    <label for="city">City</label>
-                    <input type="text" class="form-control" id="city" placeholder="City" required>
+                    <label for="district">District</label>
+                    <select class="form-control" id="district" name="district">
+                        <option value="0">Select</option>
+                        <option value="mangalore">Mangalore</option>
+                    </select>
                 </div>
                 <div class="col-md-5 mb-3">
-                    <label for="state">State</label>
-                    <input type="text" class="form-control" id="state" placeholder="State" required>
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-md-6 mb-3">
-                    <label for="country">Country</label>
-                    <input type="text" class="form-control" id="country" placeholder="Country" required>
+                    <label for="state">State</label>
+                    <select class="form-control" id="state" name="country">
+                        <option value="0">Select</option>
+                        <option value="india">India</option>
+                    </select>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="pin">Pin Code</label>
-                    <input type="text" class="form-control" id="pin" placeholder="Pin Code" required>
+                    <input type="text" class="form-control" id="pin" name="pin" placeholder="Pin Code" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-5 mb-3">
+                    <label for="pass">Password</label>
+                    <input type="password" class="form-control" id="pass" name="password" placeholder="Password" required>
+                </div>
+                <div class="col-md-5 mb-3">
+                    <label for="rpass">Re-Tyep Password</label>
+                    <input type="password" class="form-control" id="rpass" placeholder="Retype Password" required>
                 </div>
             </div>
             <div class="form-row">
@@ -77,11 +125,11 @@
                     </label>
                 </div>
             </div>
-            <button class="btn btn-primary" type="submit">SignUp</button>
+            <button class="btn btn-primary" id="button_validate_signup" type="submit">SignUp</button>
         </form>
     </div>
 {% endblock %}
 
 {% block custom_script %}
-<script src="{{ url_for('static', filename = '/res/js/signup-script.js') }}"/>
+<script src="{{ url_for('static', filename = 'res/js/signup-script.js') }}"/>
 {% endblock %}
