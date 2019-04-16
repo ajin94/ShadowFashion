@@ -24,7 +24,6 @@ def signup():
 
 @sfapp.route('/validate_and_add_user', methods=['POST'])
 def validate_and_add_user():
-    import pdb; pdb.set_trace()
     form_data = dict()
     form_data['account_type'] = int(request.form.get('account_type', None))
     form_data['fname'] = request.form.get('fname', None)
@@ -46,12 +45,19 @@ def validate_and_add_user():
 
     try:
         cursor, con_obj = Connection()
-        insert_query = """INSERT INTO user (account_type_id, fname, sname, gender, dob, user_name,
-                          password, email, phone_number, house_apt, district, city, state, pin)
-                          VALUES (%i,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+        insert_query = "INSERT INTO user (account_type_id, fname, sname, user_name, gender, dob, email, phone_number, house_apt, district, city, state, pin, password) VALUES (%i,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+
+        args = (form_data['account_type'], form_data['fname'], form_data['sname'],
+                form_data['uname'], form_data['gender'], form_data['dob'],
+                form_data['email'], form_data['phone'], form_data['street_apt'],
+                form_data['district'], form_data['city'], form_data['state'],
+                form_data['pin'], form_data['password'],)
+        cursor.execute(insert_query, args)
+        con_obj.commit()
     except Exception as e:
         print(e)
     else:
+        cursor.close()
         con_obj.close()
         return redirect(url_for('index'))
 
