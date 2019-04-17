@@ -2,11 +2,10 @@ from flask import Flask, session, request
 from flask import redirect, render_template
 from flask import url_for
 from flask_wtf.csrf import CSRFProtect
-from connections import Connection
+from connections import connection
 from form_validations import valid_signup
 
 sfapp = Flask(__name__)
-
 
 @sfapp.route('/')
 def index():
@@ -18,8 +17,32 @@ def index():
 
 @sfapp.route('/signup')
 def signup():
-    return render_template('auth/signup.html')\
+    return render_template('auth/signup.html')
 
+
+@sfapp.route('/signin')
+def signin():
+    user_name_or_email = request.form.get('uname_or_email', None)
+    password = request.form.get('account_password', None)
+
+    select_query = "SELECT id, uname FROM user WHERE uname=%s AND password=%s"
+    if user_name_or_email.endswith(".com"):
+        select_query = "SELECT id, uname FROM user WHERE email=%s AND password=%s"
+    args = (user_name_or_email, password)
+    import pdb; pdb.set_trace()
+    try:
+        cursor, conn = connection()
+        cursor.execute(select_query, args)
+    except Exception as e:
+        print (e)
+
+    return redirect(url_for('index'))
+
+
+@sfapp.route('/logout', methods=['POST'])
+def logout():
+    session.pop('user-name', None)
+    return redirect(url_for('index'))
 
 
 @sfapp.route('/validate_and_add_user', methods=['POST'])
@@ -44,8 +67,8 @@ def validate_and_add_user():
         return redirect(url_for('signup'))
 
     try:
-        cursor, con_obj = Connection()
-        insert_query = "INSERT INTO user (account_type_id, fname, sname, user_name, gender, dob, email, phone_number, house_apt, district, city, state, pin, password) VALUES (%i,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        cursor, conn = connection()
+        insert_query = "INSERT INTO user (account_type_id, fname, sname, user_name, gender, dob, email, phone_number, house_apt, district, city, state, pin, password) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
 
         args = (form_data['account_type'], form_data['fname'], form_data['sname'],
                 form_data['uname'], form_data['gender'], form_data['dob'],
@@ -53,12 +76,13 @@ def validate_and_add_user():
                 form_data['district'], form_data['city'], form_data['state'],
                 form_data['pin'], form_data['password'],)
         cursor.execute(insert_query, args)
-        con_obj.commit()
+        conn.commit()
     except Exception as e:
         print(e)
     else:
+        session['user-name'] = form_data['uname']
         cursor.close()
-        con_obj.close()
+        conn.close()
         return redirect(url_for('index'))
 
 

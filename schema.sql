@@ -1,3 +1,5 @@
+CREATE DATABASE `shadowfashion`;
+
 USE `shadowfashion`;
 
 
@@ -6,8 +8,12 @@ CREATE TABLE `account_types` (
   `type` VARCHAR(100)
 );
 
+INSERT INTO account_types VALUES (1, "customer account");
+INSERT INTO account_types VALUES (2, "pagent account");
+INSERT INTO account_types VALUES (3, "blogger");
+
 CREATE TABLE `user` (
-  `id` INT PRIMARY KEY,
+  `id` INT PRIMARY KEY AUTO_INCREMENT,
   `account_type_id` INT,
   `fname` VARCHAR(100),
   `sname` VARCHAR(100),
