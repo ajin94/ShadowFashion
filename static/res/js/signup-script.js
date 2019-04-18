@@ -23,11 +23,11 @@
  function validate_form(){
     var is_valid_form = true;
     if (validate_selects() != true){
-    alert("validating selects");
+    // alert("validating selects");
         is_valid_form = false;
     }
     if (validate_inputs() != true){
-    alert("validating inputs");
+    // alert("validating inputs");
         is_valid_form = false;
     }
     return is_valid_form
@@ -89,13 +89,13 @@
 
  function validate_email(email){
     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    alert(email);
+    // alert(email);
     var emailFormat = re.test(email);
     if (emailFormat == true) {
-        alert("validation success");
+        // alert("validation success");
         return true;
     }else{
-        alert("validation failed");
+        // alert("validation failed");
         return false;
     }
  }
