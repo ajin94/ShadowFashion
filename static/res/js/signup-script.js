@@ -10,8 +10,6 @@
                success:function(response){
                  if (response.status == "OK"){
                    location.reload();
-                 }else{
-                   $('#invalid_credentials').show();
                  }
                 },
                 error:function(){
