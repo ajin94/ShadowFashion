@@ -2,10 +2,25 @@
      $('#button_validate_signup').click(function(){
 
         if (validate_form() == true){
-            alert("form validation ran fine");
-        }
-     });
- });
+            $.ajax({
+               type:'post',
+               url:$SCRIPT_ROOT + '/_signup',
+               data:$('#signup-form').serialize(),
+               dataType:'json',
+               success:function(response){
+                 if (response.status == "OK"){
+                   location.reload();
+                 }else{
+                   $('#invalid_credentials').show();
+                 }
+                },
+                error:function(){
+                   alert("Error!");
+                }
+             });
+         }
+  });
+});
 
  function validate_form(){
     var is_valid_form = true;
@@ -77,7 +92,7 @@
  function validate_email(email){
     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     alert(email);
-    var emailFormat = re.test(email);// this return result in boolean type
+    var emailFormat = re.test(email);
     if (emailFormat == true) {
         alert("validation success");
         return true;
