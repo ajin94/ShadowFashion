@@ -185,11 +185,14 @@
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							My Account
 						</a>
-                        		{% else %}
+						<a href="{{ url_for('logout') }}" class="flex-c-m trans-04 p-lr-25">
+							Logout
+						</a>
+					{% else %}
 						<a class="flex-c-m trans-04 p-lr-25" data-toggle="modal" data-target="#login_signup_modal">
 							Login
 						</a>
-                        		{% endif %}
+					{% endif %}
 
 						<a href="#" class="flex-c-m p-lr-10 trans-04">
 							EN
@@ -355,28 +358,29 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+				<p class="text-danger" id="invalid_credentials" style="display:none;"><span class="fa fa-warning"></span> INVALID Email or Password. Try Again !</p>
                 <div class="modal-body">
-                    <form>
+                    <form id="login_form">
                         <div class="form-group">
                             <label for="email`">User Name or Email address</label>
                             <input type="email" class="form-control" id="email" name="uname_or_email"
 								   aria-describedby="emailHelp" placeholder="Enter email or user name">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1"
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password"
 								   name="account_password" placeholder="Password">
                         </div>
                         <div class="w-100 text-right">
-							<p class="text-left">New user ? <a href="{{ url_for('signup') }}">SignUp.</a></p>
-                            <button type="button" class="btn btn-primary">Login</button>
+							<p class="text-left"><a href="{{ url_for('signup') }}">Forgot Password ! </a> | New user ? <a href="{{ url_for('signup') }}">SignUp.</a></p>
+                            <button type="button" class="btn btn-primary" id="login_button">Login</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
+	<script type=text/javascript> $SCRIPT_ROOT = {{ request.script_root|tojson|safe }}; </script>
 <!--===============================================================================================-->
 	<script src="{{ url_for('static', filename='res/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
 <!--===============================================================================================-->
@@ -479,5 +483,38 @@
 <!--===============================================================================================-->
 	<script src="{{ url_for('static', filename='res/js/main.js')}}"></script>
 
+	<script type="text/javascript">
+		var csrf_token = "{{ csrf_token() }}";
+
+		$.ajaxSetup({
+			beforeSend: function(xhr, settings) {
+				if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+					xhr.setRequestHeader("X-CSRFToken", csrf_token);
+				}
+			}
+		});
+	</script>
+	<script>
+		$(document).ready(function(){
+			$("#login_button").click(function(){
+				$.ajax({
+					type:'post',
+					url:$SCRIPT_ROOT + '/_signin',
+					data:$('#login_form').serialize(),
+					dataType:'json',
+					success:function(response){
+						if (response.status == "OK"){
+							location.reload();
+						}else{
+							$('#invalid_credentials').show();
+						}
+					},
+					error:function(){
+					  alert("Error!");
+					}
+			  });
+			});
+		});
+	</script>
 </body>
 </html>

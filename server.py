@@ -1,3 +1,4 @@
+import json
 from flask import Flask, session, request
 from flask import redirect, render_template
 from flask import url_for
@@ -10,7 +11,7 @@ sfapp = Flask(__name__)
 @sfapp.route('/')
 def index():
     template_arguments = {
-        "user-name": session.get('user', None)
+        "user-name": session.get('user_name', None)
     }
     return render_template('client/index.html', template_data=template_arguments)
 
@@ -20,28 +21,35 @@ def signup():
     return render_template('auth/signup.html')
 
 
-@sfapp.route('/signin')
+@sfapp.route('/_signin', methods=['POST'])
 def signin():
     user_name_or_email = request.form.get('uname_or_email', None)
     password = request.form.get('account_password', None)
 
-    select_query = "SELECT id, uname FROM user WHERE uname=%s AND password=%s"
+    select_query = "SELECT id, user_name FROM user WHERE user_name=%s AND password=%s"
     if user_name_or_email.endswith(".com"):
-        select_query = "SELECT id, uname FROM user WHERE email=%s AND password=%s"
+        select_query = "SELECT id, user_name FROM user WHERE email=%s AND password=%s"
     args = (user_name_or_email, password)
-    import pdb; pdb.set_trace()
     try:
         cursor, conn = connection()
         cursor.execute(select_query, args)
+        rows = cursor.fetchall()
+        if rows:
+            ((id, user_name),) = rows
+            session['user_name'] = user_name
+            session['id'] = id
+            return json.dumps({'status': 'OK'})
+        else:
+            return json.dumps({'status': 'NU'})
     except Exception as e:
-        print (e)
+        print(e)
+    return
 
-    return redirect(url_for('index'))
 
-
-@sfapp.route('/logout', methods=['POST'])
+@sfapp.route('/logout')
 def logout():
-    session.pop('user-name', None)
+    session.pop('user_name', None)
+    session.pop('id', None)
     return redirect(url_for('index'))
 
 
