@@ -4,7 +4,7 @@
         if (validate_form() == true){
             $.ajax({
                type:'post',
-               url:$SCRIPT_ROOT + '/_signup',
+               url:$SCRIPT_ROOT + '/_user_signup',
                data:$('#signup-form').serialize(),
                dataType:'json',
                success:function(response){
