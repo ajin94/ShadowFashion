@@ -53,8 +53,8 @@ def logout():
     return redirect(url_for('index'))
 
 
-@sfapp.route('/validate_and_add_user', methods=['POST'])
-def validate_and_add_user():
+@sfapp.route('/_user_signup', methods=['POST'])
+def user_signup():
     form_data = dict()
     form_data['account_type'] = int(request.form.get('account_type', None))
     form_data['fname'] = request.form.get('fname', None)
@@ -70,9 +70,6 @@ def validate_and_add_user():
     form_data['state'] = request.form.get('state', None)
     form_data['pin'] = request.form.get('pin', None)
     form_data['password'] = request.form.get('password', None)
-
-    if not valid_signup(form_data):
-        return redirect(url_for('signup'))
 
     try:
         cursor, conn = connection()
