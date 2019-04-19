@@ -83,7 +83,7 @@ def user_signup():
         cursor.execute(insert_query, args)
         conn.commit()
     except Exception as e:
-        return json.dumps(form_data)
+        return json.dumps({"exception":str(e.traceback())})
         print(e)
     else:
         session['user-name'] = form_data['uname']
