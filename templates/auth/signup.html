@@ -20,7 +20,8 @@
         </div>
     </div>
     <div class="">
-        <form id="signup-form">
+        <form action="/user_signup" method="post" id="signup-form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
             <div class="form-row">
                 <div class="col-md-10 mb-3">
                     <label for="account_type">Sign Up For</label>
@@ -57,7 +58,7 @@
             <div class="form-row">
                 <div class="col-md-3 mb-3">
                     <label for="gender">Gender</label>
-                    <select class="form-control" id="gender" name="gender">
+                    <select class="form-control" id="gender" name="gender" required>
                         <option value="none">Select</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
@@ -151,11 +152,11 @@
                     </label>
                 </div>
             </div>
-            <button class="btn btn-primary" id="button_validate_signup" type="button">SignUp</button>
+            <button class="btn btn-primary" id="button_validate_signup" type="submit">SignUp</button>
         </form>
     </div>
 {% endblock %}
 
 {% block custom_script %}
-<script src="{{ url_for('static', filename = 'res/js/signup-script.js') }}"></script>
+<script src="{{ url_for('static', filename = 'res/js/signup_script.js') }}"></script>
 {% endblock %}

@@ -1,36 +1,24 @@
  $(document).ready(function(){
-     $('#button_validate_signup').click(function(){
-
+ alert("working");
+     $('#signup-form').submit(function(){
+     alert("working");
         if (validate_form() == true){
-            $.ajax({
-               type:'post',
-               url:$SCRIPT_ROOT + '/_user_signup',
-               data:$('#signup-form').serialize(),
-               dataType:'json',
-               success:function(response){
-                 if (response.status == "OK"){
-                   location.reload();
-                 }
-                },
-                error:function(){
-                   alert("Error!");
-                }
-             });
+            return true;
+         }else{
+            return false;
          }
-  });
+    });
 });
 
- function validate_form(){
+function validate_form(){
     var is_valid_form = true;
     if (validate_selects() != true){
-    // alert("validating selects");
         is_valid_form = false;
     }
     if (validate_inputs() != true){
-    // alert("validating inputs");
         is_valid_form = false;
     }
-    return is_valid_form
+    return is_valid_form;
  }
 
  function validate_selects(){
@@ -71,31 +59,37 @@
 
  function validate_inputs(){
     var no_invalids = true;
-    if ($("#email").val() == ""){
-        $('#email-invalid-select').show();
-        $('#email-invalid-select').text("Email cannot be empty");
+   if (validate_email($("#email").val()) == false){
         no_invalids = false;
+        $('#email-invalid-select').show();
+        $('#email-invalid-select').text("Account exists with this email");
     }else{
-       if (validate_email($("#email").val()) == false){
-            no_invalids = false;
-            $('#email-invalid-select').show();
-            $('#email-invalid-select').text("Enter a valid Email");
-        }else{
-            $('#email-type-select').hide();
-        }
+        $('#email-invalid-select').hide();
     }
-    return no_invalids
+    return no_invalids;
  }
 
  function validate_email(email){
-    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    // alert(email);
-    var emailFormat = re.test(email);
-    if (emailFormat == true) {
-        // alert("validation success");
-        return true;
-    }else{
-        // alert("validation failed");
-        return false;
-    }
+    alert("validating email");
+    $.ajax({
+        type:'get',
+        url:'http://localhost:5000/check_email_duplicate',
+        data:{
+            "email": $('#email').val(),
+        },
+        dataType:'json',
+        success:function(response){
+            if (response.status != "OK"){
+                alert("validation success");
+                $('#email-invalid-select').show();
+                $('#email-invalid-select').text("Account exists with this email");
+            }else{
+                alert("validation failed");
+                $('#invalid_credentials').show();
+            }
+        },
+        error:function(){
+          alert("Error!");
+        }
+  });
  }

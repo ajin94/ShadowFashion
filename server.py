@@ -53,7 +53,7 @@ def logout():
     return redirect(url_for('index'))
 
 
-@sfapp.route('/_user_signup', methods=['POST'])
+@sfapp.route('/user_signup', methods=['POST'])
 def user_signup():
     form_data = dict()
     form_data['account_type'] = int(request.form.get('account_type', None))
@@ -74,7 +74,7 @@ def user_signup():
     try:
         cursor, conn = connection()
         insert_query = "INSERT INTO user (account_type_id, fname, sname, user_name, gender, dob, email, phone_number, house_apt, district, city, state, pin, password) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-
+        print(form_data)
         args = (form_data['account_type'], form_data['fname'], form_data['sname'],
                 form_data['uname'], form_data['gender'], form_data['dob'],
                 form_data['email'], form_data['phone'], form_data['street_apt'],
@@ -83,12 +83,29 @@ def user_signup():
         cursor.execute(insert_query, args)
         conn.commit()
     except Exception as e:
+        return json.dumps(form_data)
         print(e)
     else:
         session['user-name'] = form_data['uname']
         cursor.close()
         conn.close()
         return redirect(url_for('index'))
+
+
+@sfapp.route('/check_email_duplicate', methods=['GET'])
+def check_email_duplicate():
+    email_id = request.args.get('email', None)
+    try:
+        cursor, conn = connection()
+        select_query = "SELECT user_name FROM user WHERE email=%s"
+        args = (email_id,)
+        cursor.execute(select_query, args)
+        rows = cursor.fetchall()
+        if rows:
+            return json.dumps({'status': 'EXISTING'})
+    except Exception as e:
+        print(e)
+    return json.dumps({'status': 'OK'})
 
 
 if __name__ == '__main__':
