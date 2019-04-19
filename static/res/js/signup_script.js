@@ -85,7 +85,7 @@ function validate_form(){
                 $('#email-invalid-select').text("An account exists with this email");
             }else{
                 alert("validation failed");
-                $('#invalid_credentials').show();
+                //$('#invalid_credentials').show();
             }
         },
         error:function(){
