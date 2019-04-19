@@ -1,4 +1,5 @@
 import json
+Import traceback
 from flask import Flask, session, request
 from flask import redirect, render_template
 from flask import url_for
@@ -83,7 +84,7 @@ def user_signup():
         cursor.execute(insert_query, args)
         conn.commit()
     except Exception as e:
-        return json.dumps({"exception":str(e.traceback())})
+        return json.dumps({"exception":str(traceback.format_exec())})
         print(e)
     else:
         session['user-name'] = form_data['uname']
