@@ -59,7 +59,7 @@ function validate_form(){
 
  function validate_inputs(){
     var no_invalids = true;
-   if (validate_email($("#email").val()) == false){
+   if (validate_email() == false){
         no_invalids = false;
         $('#email-invalid-select').show();
         $('#email-invalid-select').text("Account exists with this email");
@@ -69,11 +69,11 @@ function validate_form(){
     return no_invalids;
  }
 
- function validate_email(email){
+ function validate_email(){
     alert("validating email");
     $.ajax({
         type:'get',
-        url:'http://localhost:5000/check_email_duplicate',
+        url:'http://theshadowfashion.com/check_email_duplicate',
         data:{
             "email": $('#email').val(),
         },
@@ -82,7 +82,7 @@ function validate_form(){
             if (response.status != "OK"){
                 alert("validation success");
                 $('#email-invalid-select').show();
-                $('#email-invalid-select').text("Account exists with this email");
+                $('#email-invalid-select').text("An account exists with this email");
             }else{
                 alert("validation failed");
                 $('#invalid_credentials').show();
