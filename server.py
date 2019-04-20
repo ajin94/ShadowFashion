@@ -163,6 +163,7 @@ def check_uname_duplicate():
 if __name__ == '__main__':
     sfapp.secret_key = '6wfwef6ASDW676w6QDWD6748wd((FD'
     sfapp.config['SESSION_TYPE'] = 'filesystem'
+    sfapp.config['WTF_CSRF_SECRET_KEY'] = 'asdaDa#$@%fewd#22342FWFQE'
     csrf = CSRFProtect()
     csrf.init_app(sfapp)
     sfapp.run(host='0.0.0.0')
