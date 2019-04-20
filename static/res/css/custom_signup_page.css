@@ -7,6 +7,6 @@
     background-attachment: fixed;
 }
 
-@media (min-width:800px){
+@media (max-width:800px){
 .signup-page-bg{display:none !important;}
 }

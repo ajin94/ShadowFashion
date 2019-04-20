@@ -1,0 +1,80 @@
+{% extends 'template_base/ClientBase.html' %}
+
+{% set active_page = "contest" %}
+
+{% block page_title %} CONTEST {% endblock %}
+
+{% block custom_styles %}
+{% endblock %}
+
+{% block client_body %}
+    <!-- Content page -->
+<section class="bg0 p-t-75 p-b-120 mt-5">
+    <div class="container">
+        <div class="row p-b-148">
+            <div class="col-md-7 col-lg-8">
+                <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
+                    <h3 class="mtext-111 cl2 p-b-16">
+                        Beauty Pageant
+                    </h3>
+
+                    <p class="stext-113 cl6 p-b-26">
+                        2019 model hunt begins with a great expectations, not only to give a beautiful face with knowledge, Courage to help and guide people with a eco friendly lifestyle, inspiration, confident, poise, beautiful portfolio, preparedness.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-11 col-md-5 col-lg-4 m-lr-auto">
+                <div class="how-bor1 ">
+                    <div class="hov-img0">
+                        <img src="{{ url_for('static', filename='res/images/pg2.jpg') }}" alt="IMG">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="order-md-2 col-md-7 col-lg-8 p-b-30">
+                <div class="p-t-7 p-l-85 p-l-15-lg p-l-0-md">
+                    <h3 class="mtext-111 cl2 p-b-16">
+                        Eligibility
+                    </h3>
+
+                    <p class="stext-113 cl6 p-b-26">
+                        Male Candidate<br/>
+                        &nbsp;&nbsp;&nbsp;Age: 17 to 21<br/>
+                        &nbsp;&nbsp;&nbsp;Height: 5 to 8 foot<br/><br/>
+                        Female Candidate<br/>
+                        &nbsp;&nbsp;&nbsp;Age: Above 21<br/>
+                        &nbsp;&nbsp;&nbsp;Height: 5.1 & above (without heals)<br/>
+                        &nbsp;&nbsp;&nbsp;Other Criteria: Unmarried | No other contract
+                    </p>
+
+                    <h3 class="mtext-111 cl2 p-b-16">
+                        Activities
+                    </h3>
+
+                    <p class="stext-113 cl6 p-b-26">
+                       Models Male, Female should be below the age 28. Mr & Miss Alpha 2k19, is the state level beauty  peagent organized by the SHADOW fashion in association with paper seed
+                        For a better tommarow. This is Specially organized to give the good Platform for those who aspire to be a successful model &  enter the Glamer industry &
+                        work for society Main cause event is to educate people to create cofriendly & disciplined civilized society. The peageant gives good explosure to contestant & partners all over india.
+                        <br/>Auditions will be conducted the main metropolitan cities of India & Finale will be held in Karnataka participating from various part of the country Finale Guests will be
+                        Proffessional models & Celebties, entrepreneurs directors, producers & Fashion Designers.
+                    </p>
+                </div>
+            </div>
+
+            <div class="order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30">
+                <div class="how-bor2">
+                    <div class="hov-img0">
+                        <img src="{{ url_for('static', filename='res/images/pg1.jpg') }}" alt="IMG">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block custom_scripts %}
+{% endblock %}

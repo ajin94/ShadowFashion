@@ -4,10 +4,11 @@ from flask import Flask, session, request
 from flask import redirect, render_template
 from flask import url_for
 from flask_wtf.csrf import CSRFProtect
-from connections import connection
+from connections import get_connection
 from form_validations import valid_signup
 
 sfapp = Flask(__name__)
+
 
 @sfapp.route('/')
 def index():
@@ -15,6 +16,30 @@ def index():
         "user-name": session.get('user_name', None)
     }
     return render_template('client/index.html', template_data=template_arguments)
+
+
+@sfapp.route('/store')
+def store():
+    template_arguments = {
+        "user-name": session.get('user_name', None)
+    }
+    return render_template('client/store.html', template_data=template_arguments)
+
+
+@sfapp.route('/contest')
+def contest():
+    template_arguments = {
+        "user-name": session.get('user_name', None)
+    }
+    return render_template('client/contest.html', template_data=template_arguments)
+
+
+@sfapp.route('/aboutus')
+def aboutus():
+    template_arguments = {
+        "user-name": session.get('user_name', None)
+    }
+    return render_template('client/about.html', template_data=template_arguments)
 
 
 @sfapp.route('/signup')
@@ -32,7 +57,7 @@ def signin():
         select_query = "SELECT id, user_name FROM user WHERE email=%s AND password=%s"
     args = (user_name_or_email, password)
     try:
-        cursor, conn = connection()
+        cursor, conn = get_connection()
         cursor.execute(select_query, args)
         rows = cursor.fetchall()
         if rows:
@@ -54,7 +79,7 @@ def logout():
     return redirect(url_for('index'))
 
 
-@sfapp.route('/user_signup', methods=['POST'])
+@sfapp.route('/_user_signup', methods=['POST'])
 def user_signup():
     form_data = dict()
     form_data['account_type'] = int(request.form.get('account_type', None))
@@ -73,7 +98,7 @@ def user_signup():
     form_data['password'] = request.form.get('password', None)
 
     try:
-        cursor, conn = connection()
+        cursor, conn = get_connection()
         insert_query = "INSERT INTO user (account_type_id, fname, sname, user_name, gender, dob, email, phone_number, house_apt, district, city, state, pin, password) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
         print(form_data)
         args = (form_data['account_type'], form_data['fname'], form_data['sname'],
@@ -84,28 +109,54 @@ def user_signup():
         cursor.execute(insert_query, args)
         conn.commit()
     except Exception as e:
-        return json.dumps({"exception":str(traceback.format_exc())})
-        print(e)
+        return json.dumps({"status": "ERROR"})
     else:
-        session['user-name'] = form_data['uname']
-        cursor.close()
-        conn.close()
-        return redirect(url_for('index'))
+        session['user_name'] = form_data['uname']
+        return json.dumps({"status": "OK"})
 
 
-@sfapp.route('/check_email_duplicate', methods=['GET'])
+@sfapp.route('/_check_email_duplicate', methods=['GET'])
 def check_email_duplicate():
     email_id = request.args.get('email', None)
     try:
-        cursor, conn = connection()
-        select_query = "SELECT user_name FROM user WHERE email=%s"
-        args = (email_id,)
-        cursor.execute(select_query, args)
+        cursor, conn = get_connection()
+        select_query = "SELECT user_name FROM user WHERE email='{}'".format(email_id)
+        cursor.execute(select_query)
         rows = cursor.fetchall()
         if rows:
             return json.dumps({'status': 'EXISTING'})
     except Exception as e:
-        print(e)
+        return json.dumps({'status': 'ERROR'})
+    return json.dumps({'status': 'OK'})
+
+
+@sfapp.route('/_check_phone_duplicate', methods=['GET'])
+def check_phone_duplicate():
+    phone = request.args.get('phone', None)
+    try:
+        cursor, conn = get_connection()
+        select_query = "SELECT user_name FROM user WHERE phone_number='{}'".format(phone)
+        cursor.execute(select_query)
+        rows = cursor.fetchall()
+        if rows:
+            return json.dumps({'status': 'EXISTING'})
+    except Exception as e:
+        return json.dumps({'status': 'ERROR'})
+    return json.dumps({'status': 'OK'})
+
+
+@sfapp.route('/_check_uname_duplicate', methods=['GET'])
+def check_uname_duplicate():
+    user_name = request.args.get('user_name', None)
+    try:
+        cursor, conn = get_connection()
+        select_query = "SELECT user_name FROM user WHERE user_name='{}'".format(user_name)
+        cursor.execute(select_query)
+        rows = cursor.fetchall()
+        if rows:
+            return json.dumps({'status': 'EXISTING'})
+    except Exception as e:
+        return json.dumps({'status': 'ERROR'})
     return json.dumps({'status': 'OK'})
 
 

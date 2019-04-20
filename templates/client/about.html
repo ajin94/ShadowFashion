@@ -1,0 +1,82 @@
+{% extends 'template_base/ClientBase.html' %}
+
+{% set active_page = "about" %}
+
+{% block page_title %} ABOUT {% endblock %}
+
+{% block custom_styles %}
+{% endblock %}
+
+{% block client_body %}
+
+<!-- Content page -->
+<section class="bg0 p-t-75 p-b-120 mt-5">
+    <div class="container">
+        <div class="row p-b-148">
+            <div class="col-md-7 col-lg-8">
+                <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
+                    <h3 class="mtext-111 cl2 p-b-16">
+                        Our Story&nbsp;&nbsp;-&nbsp;The shadow fashion
+                    </h3>
+
+                    <p class="stext-113 cl6 p-b-26">
+                        Established at Kinnigoli, Mangalore in 2017. Shadow fashion is a vision, a vision to bring up Mangalore as the future fashion city. We also provide consultation to develop fashion outfits within your price range. Offering wide range of apparel to fit any individual be it woman man or kids Our unique sense of style custom affordable trendy designer quality dresses offer an unparalleled online shopping experience also our clothing are carefully curated to provide our customers the latest in fashion. To keep our customers in style. The shadow fashion is a fashionastas best place to create the perfect wardrobe.
+                    </p>
+
+                    <p class="stext-113 cl6 p-b-26">
+                        Our collections harmonize fashionable design, sophistication ad excitement with quality, richness and care. A combination that gives our customers complete confidence in their choices, and fully addresses their fashion needs. Well designed Blazers, gowns and Groom outfits.
+                    </p>
+
+                    <p class="stext-113 cl6 p-b-26">
+                        Any questions? Let us know in store at Besant Complex, MG Road, M G Road, Mangalore - 575003, Opposite Canara Bank, Near Deepa Comforts
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-11 col-md-5 col-lg-4 m-lr-auto">
+                <div class="how-bor1 ">
+                    <div class="hov-img0">
+                        <img src="{{ url_for('static', filename='res/images/about-01.jpg') }}" alt="IMG">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="order-md-2 col-md-7 col-lg-8 p-b-30">
+                <div class="p-t-7 p-l-85 p-l-15-lg p-l-0-md">
+                    <h3 class="mtext-111 cl2 p-b-16">
+                        Our Mission
+                    </h3>
+
+                    <p class="stext-113 cl6 p-b-26">
+                        Beyond helping you look your best, Shadow fashion strives to make every purchase a positive experience. Our top priorities are excellent customers service, exceptionally quick order processing, we value your feedback, whether positive or constructive and we are continuously working to improve your experience of you are a first time visitor, or long standing customer, We hope you will be thrilled with every aspect of you’re the SHADOW fashion experience. Consultation and customization.
+                    </p>
+
+                    <div class="bor16 p-l-29 p-b-9 m-t-22">
+                        <p class="stext-114 cl6 p-r-40 p-b-11">
+                            Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn't really do it, they just saw something. It seemed obvious to them after a while.
+                        </p>
+
+                        <span class="stext-111 cl8">
+                            - Steve Job’s
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30">
+                <div class="how-bor2">
+                    <div class="hov-img0">
+                        <img src="{{ url_for('static', filename='res/images/store/store9.jpg') }}" alt="IMG">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block custom_scripts %}
+{% endblock %}
