@@ -8,6 +8,11 @@ from connections import get_connection
 from form_validations import valid_signup
 
 sfapp = Flask(__name__)
+sfapp.secret_key = '6wfwef6ASDW676w6QDWD6748wd((FD'
+sfapp.config['SESSION_TYPE'] = 'filesystem'
+sfapp.config['WTF_CSRF_SECRET_KEY'] = 'asdaDa#$@%fewd#22342FWFQE'
+csrf = CSRFProtect()
+csrf.init_app(sfapp)
 
 
 @sfapp.route('/')
@@ -159,11 +164,3 @@ def check_uname_duplicate():
         return json.dumps({'status': 'ERROR'})
     return json.dumps({'status': 'OK'})
 
-
-if __name__ == '__main__':
-    sfapp.secret_key = '6wfwef6ASDW676w6QDWD6748wd((FD'
-    sfapp.config['SESSION_TYPE'] = 'filesystem'
-    sfapp.config['WTF_CSRF_SECRET_KEY'] = 'asdaDa#$@%fewd#22342FWFQE'
-    csrf = CSRFProtect()
-    csrf.init_app(sfapp)
-    # sfapp.run(host='0.0.0.0')
