@@ -8,7 +8,7 @@
                 dataType:'json',
                 success:function(response){
                     if (response.status == "OK"){
-                        window.location.href = "index";
+                        window.location.href = "/";
                     }else if (response.status == "ERROR"){
                         location.reload();
                     }
