@@ -218,12 +218,12 @@
 					</span>
 				</li>
 
-				<li class="label1 {{ 'active-menu' if active_page == 'contest' else '' }}" data-label1="New">
-					<a href="{{ url_for('store') }}">Contests</a>
-				</li>
-
                 <li class="{{ 'active-menu' if active_page == 'store' else '' }}">
 					<a href="{{ url_for('store') }}">Store</a>
+				</li>
+
+				<li class="{{ 'active-menu' if active_page == 'contest' else '' }}">
+					<a href="{{ url_for('contest') }}">Contests</a>
 				</li>
 
 				<li>
