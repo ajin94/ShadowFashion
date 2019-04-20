@@ -166,4 +166,4 @@ if __name__ == '__main__':
     sfapp.config['WTF_CSRF_SECRET_KEY'] = 'asdaDa#$@%fewd#22342FWFQE'
     csrf = CSRFProtect()
     csrf.init_app(sfapp)
-    sfapp.run(host='0.0.0.0')
+    # sfapp.run(host='0.0.0.0')
