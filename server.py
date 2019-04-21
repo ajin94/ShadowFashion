@@ -1,11 +1,9 @@
 import json
-import traceback
-from flask import Flask, session, request
+from flask import Flask, session, request, send_file
 from flask import redirect, render_template
 from flask import url_for
 from flask_wtf.csrf import CSRFProtect
 from connections import get_connection
-from form_validations import valid_signup
 
 sfapp = Flask(__name__)
 sfapp.secret_key = '6wfwef6ASDW676w6QDWD6748wd((FD'
@@ -82,6 +80,15 @@ def logout():
     session.pop('user_name', None)
     session.pop('id', None)
     return redirect(url_for('index'))
+
+
+@sfapp.route('/_get_participation_form')
+def get_participation_form():
+    try:
+        return send_file('/home/mxp/projects/ShadowFashion/static/files/pageantapplicationform.pdf',
+                         attachment_filename='participant_form.pdf', as_attachment=True)
+    except Exception as e:
+        return str(e)
 
 
 @sfapp.route('/_user_signup', methods=['POST'])
