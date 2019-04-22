@@ -1,5 +1,5 @@
-.signup-page-bg{
-    background-image: linear-gradient( rgba(0,0,0,.5), rgba(0,0,0,.5) ),  url('../../res/images/bg1.jpg');
+.signup-main{
+    background-image: url('../../res/images/signupbg.jpg');
     background-size: cover;
     /*min-height:100vh;*/
     background-position: center;

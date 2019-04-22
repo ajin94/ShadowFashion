@@ -19,10 +19,10 @@
             </h2>
         </div>
     </div>
-    <div class="">
+    <!--<div class="">-->
         <form id="signup_form">
             <div class="form-row">
-                <div class="col-md-10 mb-3">
+                <div class="col-md-11 mb-3">
                     <label for="account_type">Sign Up For</label>
                     <select class="form-control" id="account_type" name="account_type">
                         <option value="none">Select An Account Type</option>
@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="col-md-5 mb-3">
+                <div class="col-md-6 mb-3">
                     <label for="fname">First name</label>
                     <input type="text" class="form-control" id="fname" name="fname" placeholder="First name" required>
                     <div class="invalid-feedback" id="fname-invalid-select" style="display:None"> </div>
@@ -48,14 +48,14 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="col-md-10 mb-3">
+                <div class="col-md-11 mb-3">
                     <label for="uname">User Name</label>
                     <input type="text" class="form-control" id="uname" name="uname" placeholder="User Name for the account" required>
                     <div class="invalid-feedback" id="uname-invalid-select" style="display:None"> </div>
                 </div>
             </div>
             <div class="form-row">
-                <div class="col-md-3 mb-3">
+                <div class="col-md-4 mb-3">
                     <label for="gender">Gender</label>
                     <select class="form-control" id="gender" name="gender" required>
                         <option value="none">Select</option>
@@ -73,28 +73,28 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="col-md-10 mb-3">
+                <div class="col-md-11 mb-3">
                     <label for="email">Email ID</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Email ID" required>
                     <div class="invalid-feedback" id="email-invalid-select" style="display:None"> </div>
                 </div>
             </div>
             <div class="form-row">
-                <div class="col-md-10 mb-3">
+                <div class="col-md-11 mb-3">
                     <label for="phone">Phone Number</label>
                     <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone No." required>
                     <div class="invalid-feedback" id="phone-invalid-select" style="display:None"> </div>
                 </div>
             </div>
             <div class="form-row">
-                <div class="col-md-10 mb-3">
+                <div class="col-md-11 mb-3">
                     <label for="st">House/Apt. No.</label>
                     <input type="text" class="form-control" id="street_apt" name="street_apt" placeholder="Street / Apt." required>
                     <div class="invalid-feedback" id="streetapt-invalid-select" style="display:None"> </div>
                 </div>
             </div>
             <div class="form-row">
-                <div class="col-md-5 mb-3">
+                <div class="col-md-6 mb-3">
                     <label for="district">District</label>
                     <select class="form-control" id="district" name="district">
                         <option value="none">Select</option>
@@ -116,7 +116,7 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="col-md-6 mb-3">
+                <div class="col-md-5 mb-3">
                     <label for="state">State</label>
                     <select class="form-control" id="state" name="state">
                         <option value="none">Select</option>
@@ -126,7 +126,7 @@
                         Please choose the state.
                     </div>
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-6 mb-3">
                     <label for="pin">Pin Code</label>
                     <input type="text" class="form-control" id="pin" name="pin" placeholder="Pin Code" required>
                     <div class="invalid-feedback" id="pin-invalid-select" style="display:None"> </div>
@@ -138,15 +138,17 @@
                     <input type="password" class="form-control" id="pass" name="password" placeholder="Password" required>
                     <div class="invalid-feedback" id="pass-invalid-select" style="display:None"> </div>
                 </div>
-                <div class="col-md-5 mb-3">
+                <div class="col-md-6 mb-3">
                     <label for="rpass">Re-Tyep Password</label>
                     <input type="password" class="form-control" id="rpass" placeholder="Retype Password" required>
                     <div class="invalid-feedback" id="rpass-invalid-select" style="display:None"> </div>
                 </div>
             </div>
-            <button class="btn btn-primary" id="button_validate_signup" type="button">SignUp</button>
+            <div class="mt-4 text-center">
+                <button class="btn btn-primary mb-4" id="button_validate_signup" type="button">SignUp</button>
+            </div>
         </form>
-    </div>
+    <!--</div>-->
 {% endblock %}
 
 {% block custom_script %}
