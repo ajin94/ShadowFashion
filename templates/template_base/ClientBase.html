@@ -45,7 +45,11 @@
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar">
-						Making a fashion statement.
+						{% if template_data['points'] %}
+							You have <b>{{ template_data['points'] }}</b> reward points !
+						{% else %}
+							Making a fashion statement.
+						{% endif %}
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
@@ -100,7 +104,7 @@
 							</li>
 
 							<li class="label1 {{ 'active-menu' if active_page == 'contest' else '' }}" data-label1="New">
-								<a href=" {{ url_for('contest')}} ">Contests</a>
+								<a href=" {{ url_for('contest') }} ">Contests</a>
 							</li>
 
 							<li>
@@ -111,8 +115,8 @@
 								<a href="{{ url_for('aboutus') }}">About</a>
 							</li>
 
-							<li>
-								<a href="#">Contact</a>
+							<li class="{{ 'active-menu' if active_page == 'contact' else '' }}">
+								<a href="{{ url_for('contact')}}">Contact</a>
 							</li>
 						</ul>
 					</div>
@@ -170,9 +174,11 @@
 		<div class="menu-mobile">
 			<ul class="topbar-mobile">
 				<li>
-					<div class="left-top-bar">
+					{% if template_data['points'] %}
+					You have <b>{{ template_data['points'] }}</b> reward points !
+					{% else %}
 						Making a fashion statement.
-					</div>
+					{% endif %}
 				</li>
 
 				<li>
@@ -230,12 +236,12 @@
 					<a href="#">Blog</a>
 				</li>
 
-				<li>
+				<li class="{{ 'active-menu' if active_page == 'about' else '' }}">
 					<a href="{{ url_for('aboutus') }}">About</a>
 				</li>
 
-				<li>
-					<a href="#">Contact</a>
+				<li class="{{ 'active-menu' if active_page == 'contact' else '' }}">
+					<a href="{{ url_for('contact')}}">Contact</a>
 				</li>
 			</ul>
 		</div>
@@ -613,7 +619,9 @@
 		});
 	</script>
 <!--===============================================================================================-->
-	<script src="{{ url_for('static', filename='res/js/main.js')}}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAaLbo6lDENTTVHGFs1zz0y-d5pp3N1PU" type="9892f36c0e8e861512248237-text/javascript"></script>
+	<script src="{{ url_for('static', filename='res/js/map-custom.js') }}" type="9892f36c0e8e861512248237-text/javascript"></script>
+	<script src="{{ url_for('static', filename='res/js/main.js') }}"></script>
 
 	<script type="text/javascript">
 		var csrf_token = "{{ csrf_token() }}";

@@ -1,7 +1,6 @@
 .signup-main{
-    background-image: url('../../res/images/signupbg.jpg');
+    background-image: url('../../res/images/bg_2.jpg');
     background-size: cover;
-    /*min-height:100vh;*/
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;

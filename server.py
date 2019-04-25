@@ -16,7 +16,8 @@ csrf.init_app(sfapp)
 @sfapp.route('/')
 def index():
     template_arguments = {
-        "user-name": session.get('user_name', None)
+        "user-name": session.get('user_name', None),
+        "points": session.get('points', None)
     }
     return render_template('client/index.html', template_data=template_arguments)
 
@@ -24,7 +25,8 @@ def index():
 @sfapp.route('/store')
 def store():
     template_arguments = {
-        "user-name": session.get('user_name', None)
+        "user-name": session.get('user_name', None),
+        "points": session.get('points', None)
     }
     return render_template('client/store.html', template_data=template_arguments)
 
@@ -32,15 +34,26 @@ def store():
 @sfapp.route('/contest')
 def contest():
     template_arguments = {
-        "user-name": session.get('user_name', None)
+        "user-name": session.get('user_name', None),
+        "points": session.get('points', None)
     }
     return render_template('client/contest.html', template_data=template_arguments)
+
+
+@sfapp.route('/contact')
+def contact():
+    template_arguments = {
+        "user-name": session.get('user_name', None),
+        "points": session.get('points', None)
+    }
+    return render_template('client/contact.html', template_data=template_arguments)
 
 
 @sfapp.route('/aboutus')
 def aboutus():
     template_arguments = {
-        "user-name": session.get('user_name', None)
+        "user-name": session.get('user_name', None),
+        "points": session.get('points', None)
     }
     return render_template('client/about.html', template_data=template_arguments)
 
@@ -55,18 +68,19 @@ def signin():
     user_name_or_email = request.form.get('uname_or_email', None)
     password = request.form.get('account_password', None)
 
-    select_query = "SELECT id, user_name FROM user WHERE user_name=%s AND password=%s"
+    select_query = "SELECT id, user_name, reward_point FROM user WHERE user_name=%s AND password=%s"
     if user_name_or_email.endswith(".com"):
-        select_query = "SELECT id, user_name FROM user WHERE email=%s AND password=%s"
+        select_query = "SELECT id, user_name, reward_point FROM user WHERE email=%s AND password=%s"
     args = (user_name_or_email, password)
     try:
         cursor, conn = get_connection()
         cursor.execute(select_query, args)
         rows = cursor.fetchall()
         if rows:
-            ((id, user_name),) = rows
+            ((id, user_name, reward_point),) = rows
             session['user_name'] = user_name
             session['id'] = id
+            session['points'] = reward_point
             return json.dumps({'status': 'OK'})
         else:
             return json.dumps({'status': 'NU'})
