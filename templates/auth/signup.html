@@ -94,36 +94,30 @@
                 </div>
             </div>
             <div class="form-row">
+                <div class="col-md-5 mb-3">
+                    <label for="state">State</label>
+                    <select class="form-control" id="state" name="state">
+                    </select>
+                    <div class="invalid-feedback" id="state-invalid-select" style="display:None">
+                        Please choose the state.
+                    </div>
+                </div>
+
                 <div class="col-md-6 mb-3">
                     <label for="district">District</label>
                     <select class="form-control" id="district" name="district">
-                        <option value="none">Select</option>
-                        <option value="dakshina karnataka">Dakshina Karnataka</option>
                     </select>
                     <div class="invalid-feedback" id="district-invalid-select" style="display:None">
                         Please choose a district.
                     </div>
                 </div>
-                <div class="col-md-5 mb-3">
-                    <label for="city">City</label>
-                    <select class="form-control" id="city" name="city">
-                        <option value="none">Select</option>
-                        <option value="mangalore">Mangalore</option>
-                    </select>
-                    <div class="invalid-feedback" id="city-invalid-select" style="display:None">
-                        Please select your city.
-                    </div>
-                </div>
             </div>
             <div class="form-row">
                 <div class="col-md-5 mb-3">
-                    <label for="state">State</label>
-                    <select class="form-control" id="state" name="state">
-                        <option value="none">Select</option>
-                        <option value="karnataka">Karnataka</option>
-                    </select>
-                    <div class="invalid-feedback" id="state-invalid-select" style="display:None">
-                        Please choose the state.
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" name="city" placeholder="Your City" required>
+                    <div class="invalid-feedback" id="city-invalid-select" style="display:None">
+                        Please select your city.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
@@ -153,4 +147,5 @@
 
 {% block custom_script %}
 <script src="{{ url_for('static', filename = 'res/js/signup_script.js') }}"></script>
+<script src="{{ url_for('static', filename = 'res/js/state.js') }}"></script>
 {% endblock %}

@@ -41,13 +41,14 @@ function validate_selects(){
     }else{
         $("#district-invalid-select").hide();
     }
-    if ($("#city").val() == "none"){
+    if ($("#city").val() == ""){
         no_invalids = false;
         $('#city-invalid-select').show();
+        $('#city-invalid-select').text('Enter your city name');
     }else{
         $("#city-invalid-select").hide();
     }
-    if ($("#state").val() == "none"){
+    if ($("#state").val() == "Select a state"){
         no_invalids = false;
         $('#state-invalid-select').show();
     }else{
@@ -136,7 +137,7 @@ function validate_phone_pin(){
         valid_phone_pin = false;
         $('#pin-invalid-select').show();
         $('#pin-invalid-select').text("PIN cannot be empty");
-    }else if (location_pin.length !=7){
+    }else if (location_pin.length != 6){
         valid_phone_pin = false;
         $('#pin-invalid-select').show();
         $('#pin-invalid-select').text("Invalid PIN");
