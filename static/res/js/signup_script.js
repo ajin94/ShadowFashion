@@ -35,7 +35,7 @@ function validate_selects(){
     }else{
         $("#gender-invalid-select").hide();
     }
-    if ($("#district").val() == "none"){
+    if ($("#district").val() == ""){
         no_invalids = false;
         $('#district-invalid-select').show();
     }else{
@@ -140,7 +140,7 @@ function validate_phone_pin(){
     }else if (location_pin.length != 6){
         valid_phone_pin = false;
         $('#pin-invalid-select').show();
-        $('#pin-invalid-select').text("Invalid PIN");
+        $('#pin-invalid-select').text("PIN should be 6 digits");
     }else{
         $('#pin-invalid-select').hide();
     }
