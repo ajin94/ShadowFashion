@@ -15,7 +15,7 @@ def index():
         "points": session.get('points', None)
     }
     return render_template('client/index.html', template_data=template_arguments)
-
+`
 
 @sfapp.route('/store')
 def store():
