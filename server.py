@@ -13,6 +13,7 @@ sfapp.config['WTF_CSRF_SECRET_KEY'] = 'asdaDa#$@%fewd#22342FWFQE'
 csrf = CSRFProtect()
 csrf.init_app(sfapp)
 
+
 @sfapp.route('/')
 def index():
     template_arguments = {
