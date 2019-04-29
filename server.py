@@ -4,6 +4,7 @@ from flask import redirect, render_template
 from flask import url_for
 from flask_wtf.csrf import CSRFProtect
 from connections import get_connection
+import traceback
 
 sfapp = Flask(__name__)
 
@@ -147,6 +148,7 @@ def check_email_duplicate():
         if rows:
             return json.dumps({'status': 'EXISTING'})
     except Exception as e:
+        print(traceback.format_exc())
         return json.dumps({'status': 'ERROR'})
     return json.dumps({'status': 'OK'})
 
@@ -162,7 +164,7 @@ def check_phone_duplicate():
         if rows:
             return json.dumps({'status': 'EXISTING'})
     except Exception as e:
-        return json.dumps({'status': 'ERROR'})
+        return json.dumps({'status': str(traceback.format_exc())})
     return json.dumps({'status': 'OK'})
 
 
