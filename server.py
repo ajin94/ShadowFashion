@@ -78,10 +78,10 @@ def signin():
         cursor.execute(select_query, args)
         rows = cursor.fetchall()
         if rows:
-            ((id, user_name, reward_point),) = rows
+            ((id, user_name, reward_points),) = rows
             session['user_name'] = user_name
             session['id'] = id
-            session['points'] = reward_point
+            session['points'] = reward_points
             return json.dumps({'status': 'OK'})
         else:
             return json.dumps({'status': 'NU'})
