@@ -69,13 +69,13 @@ def signin():
     user_name_or_email = request.form.get('uname_or_email', None)
     password = request.form.get('account_password', None)
 
-    select_query = "SELECT id, user_name, reward_points FROM user WHERE user_name=%s AND password=%s"
+    select_query = "SELECT id, user_name, reward_points FROM user WHERE user_name='{0}' AND password='{1}'".format(user_name_or_email, password)
     if user_name_or_email.endswith(".com"):
-        select_query = "SELECT id, user_name, reward_points FROM user WHERE email=%s AND password=%s"
+        select_query = "SELECT id, user_name, reward_points FROM user WHERE email=='{0}' AND password='{1}'".format(user_name_or_email, password)
     args = (user_name_or_email, password)
     try:
         cursor, conn = get_connection()
-        cursor.execute(select_query, args)
+        cursor.execute(select_query)
         rows = cursor.fetchall()
         if rows:
             ((id, user_name, reward_points),) = rows
