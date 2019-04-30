@@ -57,9 +57,9 @@
 							Help & FAQs
 						</a>
                         {% if template_data['user-name'] %}
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							My Account
-						</a>
+						<!--<a href="#" class="flex-c-m trans-04 p-lr-25">-->
+							<!--My Account-->
+						<!--</a>-->
 						<a href="{{ url_for('logout') }}" class="flex-c-m trans-04 p-lr-25">
 							Logout
 						</a>
@@ -188,14 +188,14 @@
 						</a>
 
 					{% if template_data['user-name'] %}
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							My Account
-						</a>
+						<!--<a href="#" class="flex-c-m trans-04 p-lr-25">-->
+							<!--My Account-->
+						<!--</a>-->
 						<a href="{{ url_for('logout') }}" class="flex-c-m trans-04 p-lr-25">
 							Logout
 						</a>
 					{% else %}
-						<a class="flex-c-m trans-04 p-lr-25" data-toggle="modal" data-target="#login_signup_modal">
+						<a href="" class="flex-c-m trans-04 p-lr-25" data-toggle="modal" data-target="#login_signup_modal">
 							Login
 						</a>
 					{% endif %}
