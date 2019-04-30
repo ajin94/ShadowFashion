@@ -71,7 +71,7 @@ def signin():
 
     select_query = "SELECT id, user_name, reward_points FROM user WHERE user_name='{0}' AND password='{1}'".format(user_name_or_email, password)
     if user_name_or_email.endswith(".com"):
-        select_query = "SELECT id, user_name, reward_points FROM user WHERE email=='{0}' AND password='{1}'".format(user_name_or_email, password)
+        select_query = "SELECT id, user_name, reward_points FROM user WHERE email='{0}' AND password='{1}'".format(user_name_or_email, password)
     args = (user_name_or_email, password)
     try:
         cursor, conn = get_connection()
