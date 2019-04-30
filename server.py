@@ -2,7 +2,7 @@ import json
 from flask import Flask, session, request, send_file
 from flask import redirect, render_template
 from flask import url_for
-from flask_wtf.csrf import CSRFProtect
+from flask_wtf.csrf import CsrfProtect
 from connections import get_connection
 import traceback
 
@@ -10,7 +10,7 @@ sfapp = Flask(__name__)
 sfapp.secret_key = '6wfwef6ASDW676w6QDWD6748wd((FD'
 sfapp.config['SESSION_TYPE'] = 'filesystem'
 sfapp.config['WTF_CSRF_SECRET_KEY'] = 'asdaDa#$@%fewd#22342FWFQE'
-csrf = CSRFProtect()
+csrf = CsrfProtect()
 csrf.init_app(sfapp)
 
 
