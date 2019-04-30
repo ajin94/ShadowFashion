@@ -87,7 +87,7 @@ def signin():
             return json.dumps({'status': 'NU'})
     except Exception as e:
         print(e)
-    return
+    return json.dumps({'status': 'OK'})
 
 
 @sfapp.route('/logout')
