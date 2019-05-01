@@ -66,6 +66,20 @@ def signup():
 
 @sfapp.route('/_send_message', methods=['POST'])
 def send_message():
+    form_data = dict()
+    form_data['email'] = request.form.get('email', None)
+    form_data['message'] = request.form.get('msg', None)
+    try:
+        cursor, conn = get_connection()
+        insert_query = "INSERT INTO messages (email, message) VALUES (%s,%s)"
+        args = (form_data['email'], form_data['message'],)
+        cursor.execute(insert_query, args)
+        conn.commit()
+    except Exception as e:
+        return json.dumps({"status": "ERROR"})
+    else:
+        return json.dumps({"status": "OK"})
+
     return json.dumps({'status': 'OK'})
 
 
@@ -74,9 +88,9 @@ def signin():
     user_name_or_email = request.form.get('uname_or_email', None)
     password = request.form.get('account_password', None)
 
-    select_query = "SELECT id, user_name, reward_points FROM user WHERE user_name=%s AND password=%s"
+    select_query = "SELECT id, user_name, reward_point FROM user WHERE user_name=%s AND password=%s"
     if user_name_or_email.endswith(".com"):
-        select_query = "SELECT id, user_name, reward_points FROM user WHERE email=%s AND password=%s"
+        select_query = "SELECT id, user_name, reward_point FROM user WHERE email=%s AND password=%s"
     args = (user_name_or_email, password)
     try:
         cursor, conn = get_connection()
@@ -193,5 +207,5 @@ def check_uname_duplicate():
         return json.dumps({'status': 'ERROR'})
     return json.dumps({'status': 'OK'})
 
-if __name__ == "__main__":
-    sfapp.run()
+# if __name__ == "__main__":
+#     sfapp.run()

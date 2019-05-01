@@ -9,7 +9,7 @@
                 success:function(response){
                     if (response.status == "OK"){
                         clear_fields();
-                        // $('#message_send_modal').modal('show');
+                        $('#message_send_modal').modal();
                     }else if (response.status == "ERROR"){
                         location.reload();
                     }
@@ -43,6 +43,5 @@ function validate_message_fields(){
 }
 
 function clear_fields(){
-    alert("resetting fields");
     $('#message_form')[0].reset();
 }
