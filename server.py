@@ -152,7 +152,7 @@ def user_signup():
                 form_data['uname'], form_data['gender'], form_data['dob'],
                 form_data['email'], form_data['phone'], form_data['street_apt'],
                 form_data['district'], form_data['city'], form_data['state'],
-                form_data['pin'], form_data['password'],)
+                form_data['pin'], form_data['password'])
         cursor.execute(insert_query, args)
         conn.commit()
     except Exception as e:
