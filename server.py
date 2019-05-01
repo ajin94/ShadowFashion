@@ -159,6 +159,7 @@ def user_signup():
         return json.dumps({"status": "ERROR"})
     else:
         session['user_name'] = form_data['uname']
+        session['points'] = 100
         return json.dumps({"status": "OK"})
 
 
