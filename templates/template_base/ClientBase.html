@@ -443,7 +443,7 @@
                     </h4>
 
                     <p class="stext-107 cl7 size-201">
-                        Any questions? Let us know in store at Besant Complex, MG Road, M G Road, Mangalore - 575003, Opposite Canara Bank, Near Deepa Comforts
+                        Any questions? Let us know in store at Besant Complex, M G Road, Mangalore - 575003, Opposite Canara Bank, Near Deepa Comforts, Phone +91 773 857 3954
                     </p>
 
                     <div class="p-t-27">
@@ -619,9 +619,8 @@
 		});
 	</script>
 <!--===============================================================================================-->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAaLbo6lDENTTVHGFs1zz0y-d5pp3N1PU" type="9892f36c0e8e861512248237-text/javascript"></script>
-	<script src="{{ url_for('static', filename='res/js/map-custom.js') }}" type="9892f36c0e8e861512248237-text/javascript"></script>
 	<script src="{{ url_for('static', filename='res/js/main.js') }}"></script>
+    {% block custom_scripts %}{% endblock %}
 
 	<script type="text/javascript">
 		var csrf_token = "{{ csrf_token() }}";

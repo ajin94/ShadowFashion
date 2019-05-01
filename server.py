@@ -64,24 +64,29 @@ def signup():
     return render_template('auth/signup.html')
 
 
+@sfapp.route('/_send_message', methods=['POST'])
+def send_message():
+    return json.dumps({'status': 'OK'})
+
+
 @sfapp.route('/_signin', methods=['POST'])
 def signin():
     user_name_or_email = request.form.get('uname_or_email', None)
     password = request.form.get('account_password', None)
 
-    select_query = "SELECT id, user_name, reward_points FROM user WHERE user_name='{0}' AND password='{1}'".format(user_name_or_email, password)
+    select_query = "SELECT id, user_name, reward_points FROM user WHERE user_name=%s AND password=%s"
     if user_name_or_email.endswith(".com"):
-        select_query = "SELECT id, user_name, reward_points FROM user WHERE email='{0}' AND password='{1}'".format(user_name_or_email, password)
+        select_query = "SELECT id, user_name, reward_points FROM user WHERE email=%s AND password=%s"
     args = (user_name_or_email, password)
     try:
         cursor, conn = get_connection()
-        cursor.execute(select_query)
+        cursor.execute(select_query, args)
         rows = cursor.fetchall()
         if rows:
-            ((id, user_name, reward_points),) = rows
+            ((id, user_name, reward_point),) = rows
             session['user_name'] = user_name
             session['id'] = id
-            session['points'] = reward_points
+            session['points'] = reward_point
             return json.dumps({'status': 'OK'})
         else:
             return json.dumps({'status': 'NU'})
@@ -187,5 +192,5 @@ def check_uname_duplicate():
         return json.dumps({'status': 'ERROR'})
     return json.dumps({'status': 'OK'})
 
-# if __name__ == "__main__":
-#     sfapp.run()
+if __name__ == "__main__":
+    sfapp.run()

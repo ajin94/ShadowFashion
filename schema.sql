@@ -31,3 +31,10 @@ CREATE TABLE `user` (
   `created_date` DATETIME DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (`account_type_id`) REFERENCES `account_types`(`id`)
 );
+
+CREATE TABLE `messages` (
+  `id` INT PRIMARY KEY AUTO_INCREMENT,
+  `email` VARCHAR(100),
+  `message` MEDIUMTEXT,
+  `created_date` DATETIME DEFAULT CURRENT_TIMESTAMP
+);

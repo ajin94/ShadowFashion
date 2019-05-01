@@ -14,21 +14,28 @@
 			<div class="flex-w flex-tr">
 				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md"
 				style="border-left:0px; border-top:0px; border-bottom:0px;">
-					<form>
+					<form id="message_form">
 						<h4 class="mtext-105 cl2 txt-center p-b-30">
 							Send Us A Message
 						</h4>
 
-						<div class="bor8 m-b-20 how-pos4-parent">
-							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email" placeholder="Your Email Address">
+						<div class="bor8 m-t-20 how-pos4-parent">
+							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text"
+                                   id ="c_email" name="email" placeholder="Your Email Address">
 							<img class="how-pos4 pointer-none" src="{{ url_for('static',filename='res/images/icons/icon-email.png') }}" alt="ICON">
+                        </div>
+                        <div class="invalid-feedback" id="email-type-invalid" style="display:None">
+                            Enter a valid email id.
+                        </div>
+						<div class="bor8 m-t-30">
+							<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" id="c_message"
+                                      name="msg" placeholder="How Can We Help?"></textarea>
 						</div>
-
-						<div class="bor8 m-b-30">
-							<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg" placeholder="How Can We Help?"></textarea>
-						</div>
-
-						<button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                        <div class="invalid-feedback" id="message-type-invalid" style="display:None">
+                            Please enter a message
+                        </div>
+						<button class=" m-t-30 flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer"
+                        id="send_message" type="button">
 							Submit
 						</button>
 					</form>
@@ -47,7 +54,7 @@
 							</span>
 
 							<p class="stext-115 cl6 size-213 p-t-18">
-								Besant Complex, MG Road, M G Road, Mangalore - 575003, Opposite Canara Bank, Near Deepa Comforts
+								Besant Complex, MG Road, M G Road, Mangalore - 575003, Opposite Canara Bank,<br/>Near Deepa Comforts
 							</p>
 						</div>
 					</div>
@@ -63,7 +70,7 @@
 							</span>
 
 							<p class="stext-115 cl1 size-213 p-t-18">
-								+1 800 1236879
+								+91 773 857 3954
 							</p>
 						</div>
 					</div>
@@ -79,7 +86,7 @@
 							</span>
 
 							<p class="stext-115 cl1 size-213 p-t-18">
-								support.shadow@gmail.com
+								info@shadowfashion.com
 							</p>
 						</div>
 					</div>
@@ -87,13 +94,29 @@
 			</div>
 		</div>
 	</section>
-
-
-	<!-- Map -->
-	<div class="map">
-		<div class="size-303" id="google_map" data-map-x="40.691446" data-map-y="-73.886787" data-pin="{{ url_for('static', filename='res/images/icons/pin.png') }}" data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
-	</div>
+    
+    
+    <!-- modal -->
+	<!--login-->
+    <div class="modal fade" id="message_send_modal" tabindex="-1" role="dialog" aria-labelledby="message_send_modal_label" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="margin-top:30vh !important;">
+            <div class="modal-content" style="border-radius:0px;">
+                <div class="modal-header" style="border-bottom:0px;">
+                    <h5 class="modal-title w-100 text-center" id="message_send_modal_label"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+				<p class="text-danger" id="invalid_credentials" style="display:none;"><span class="fa fa-warning"></span> INVALID Email or Password. Try Again !</p>
+                <div class="modal-body">
+                    <h4 id="message">Thank you for your response.<br/>
+                        we'll Get back to you soon !</h4>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block custom_scripts %}
+    <script src="{{ url_for('static', filename = 'res/js/contact-script.js') }}"></script>
 {% endblock %}
