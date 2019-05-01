@@ -99,7 +99,7 @@ def signin():
 def logout():
     session.pop('user_name', None)
     session.pop('id', None)
-    Session.pop('points', None)
+    session.pop('points', None)
     return redirect(url_for('index'))
 
 
