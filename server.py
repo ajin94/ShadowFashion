@@ -208,5 +208,5 @@ def check_uname_duplicate():
         return json.dumps({'status': 'ERROR'})
     return json.dumps({'status': 'OK'})
 
-# if __name__ == "__main__":
-#     sfapp.run()
+if __name__ == "__main__":
+    sfapp.run()
