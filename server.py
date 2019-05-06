@@ -61,7 +61,17 @@ def aboutus():
 
 @sfapp.route('/signup')
 def signup():
-    return render_template('auth/signup.html')
+    account_types_dict = {}
+    select_query = "SELECT * FROM account_types"
+    try:
+        cursor, conn = get_connection()
+        cursour_result = cursor.execute(select_query)
+        if cursour_result:
+            rows = cursor.fetchall()
+            account_types_dict = {id: name for (id, name) in rows}
+    except Exception as e:
+        pass
+    return render_template('auth/signup.html', account_type_dict=account_types_dict)
 
 
 @sfapp.route('/_send_message', methods=['POST'])

@@ -26,9 +26,9 @@
                     <label for="account_type">Sign Up For</label>
                     <select class="form-control" id="account_type" name="account_type">
                         <option value="none">Select An Account Type</option>
-                        <option value="1">Customer Account</option>
-                        <option value="2">Beauty Pageant</option>
-                        <option value="3">Blogger</option>
+                        {% for key, value in account_type_dict.items() %}
+                        <option value="{{ key }}">{{ value }}</option>
+                        {% endfor %}
                     </select>
                     <div class="invalid-feedback" id="account-type-invalid" style="display:None">
                         Please choose a account type.

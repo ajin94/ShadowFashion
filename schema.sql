@@ -9,8 +9,13 @@ CREATE TABLE `account_types` (
 );
 
 INSERT INTO account_types VALUES (1, "customer account");
-INSERT INTO account_types VALUES (2, "pagent account");
+INSERT INTO account_types VALUES (2, "pageant account");
 INSERT INTO account_types VALUES (3, "blogger");
+INSERT INTO account_types VALUES (4, "prime membership");
+INSERT INTO account_types VALUES (5, "carrier account");
+INSERT INTO account_types VALUES (6, "ad enquiry");
+INSERT INTO account_types VALUES (7, "Investor");
+INSERT INTO account_types VALUES (8, "Product Vendor");
 
 CREATE TABLE `user` (
   `id` INT PRIMARY KEY AUTO_INCREMENT,
