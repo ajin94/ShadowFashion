@@ -116,7 +116,13 @@
 							</li>
 
 							<li class="{{ 'active-menu' if active_page == 'contact' else '' }}">
-								<a href="{{ url_for('contact')}}">Contact</a>
+								<a href="#">Contact</a>
+								<ul class="sub-menu">
+									<li><a href="{{ url_for('contact')}}">Contact</a></li>
+									<li class="{{ 'active-menu' if active_page == 'collaboration' else '' }}">
+										<a href="{{ url_for('collaboration') }}">Collaboration</a>
+									</li>
+								</ul>
 							</li>
 						</ul>
 					</div>
@@ -219,9 +225,6 @@
 						<!--<li><a href="home-02.html">Homepage 2</a></li>-->
 						<!--<li><a href="home-03.html">Homepage 3</a></li>-->
 					<!--</ul>-->
-					<span class="arrow-main-menu-m">
-						<i class="fa fa-angle-right" aria-hidden="true"></i>
-					</span>
 				</li>
 
                 <li class="{{ 'active-menu' if active_page == 'store' else '' }}">
@@ -241,7 +244,13 @@
 				</li>
 
 				<li class="{{ 'active-menu' if active_page == 'contact' else '' }}">
-					<a href="{{ url_for('contact')}}">Contact</a>
+					<a href="#">Contact</a>
+					<ul class="sub-menu-m">
+						<li><a href="{{ url_for('contact')}}">Contact</a></li>
+						<li class="{{ 'active-menu' if active_page == 'collaboration' else '' }}">
+							<a href="{{ url_for('collaboration') }}">Collaboration</a>
+						</li>
+					</ul>
 				</li>
 			</ul>
 		</div>
@@ -510,6 +519,38 @@
                         <div class="w-100 text-right">
 							<p class="text-left"><a href="{{ url_for('signup') }}">Forgot Password ! </a> | New user ? <a href="{{ url_for('signup') }}">SignUp.</a></p>
                             <button type="button" class="btn btn-primary" id="login_button">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<!--enquire-->
+    <div class="modal fade" id="enquiry_modal" tabindex="-1" role="dialog" aria-labelledby="enquiry_modal_label" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="margin-top:30vh !important;">
+            <div class="modal-content" style="border-radius:0px;">
+                <div class="modal-header" style="border-bottom:0px;">
+                    <h5 class="modal-title w-100 text-center" id="enquiry_modal_label">Query? We're here.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+				<p class="text-danger" id="enquiry-modal" style="display:none;"><span class="fa fa-warning"></span> INVALID Email or Password. Try Again !</p>
+                <div class="modal-body">
+                    <form id="enquiry-form">
+                        <div class="form-group">
+                            <label for="email`">User Name or Email address</label>
+                            <input type="email" class="form-control" id="email" name="uname_or_email"
+								   aria-describedby="emailHelp" placeholder="Enter email or user name">
+                        </div>
+                        <div class="form-group">
+                            <label for="doubt">Ask away..</label>
+                            <textarea class="size-75" id="doubt"
+									  name="msg" placeholder="How Can We Help ? What would you like to know about the product."></textarea>
+                        </div>
+                        <div class="w-100 text-right">
+                            <button type="button" class="btn btn-primary" id="send_enquiry">Send</button>
                         </div>
                     </form>
                 </div>

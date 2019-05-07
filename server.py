@@ -23,6 +23,15 @@ def index():
     return render_template('client/index.html', template_data=template_arguments)
 
 
+@sfapp.route('/collaboration')
+def collaboration():
+    template_arguments = {
+        "user-name": session.get('user_name', None),
+        "points": session.get('points', None)
+    }
+    return render_template('client/collaboration.html', template_data=template_arguments)
+
+
 @sfapp.route('/store')
 def store():
     template_arguments = {

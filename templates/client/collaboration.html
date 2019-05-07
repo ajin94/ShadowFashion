@@ -1,0 +1,79 @@
+{% extends 'template_base/ClientBase.html' %}
+
+{% set active_page = "collaboration" %}
+
+{% block page_title %} COllaboration {% endblock %}
+
+{% block custom_styles %}
+{% endblock %}
+
+{% block client_body %}
+<!-- Content page -->
+<section class="bg0 p-t-104 p-b-116">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-lg-8">
+                <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
+                    <h3 class="mtext-111 cl2 p-b-16">
+                        Collaborate With Us !
+                    </h3>
+
+                    <p class="stext-113 cl6 p-b-26">
+                        This will provide your company with unprecedented coverage in the lead with the company logo being incorporated on all the promotions .The logo will be positioned along with the respective associate event partner’s logo.
+                        <br/>&nbsp;&nbsp;&nbsp;&nbsp;> Video adds pre event post (using company details and logo).
+                        <br/>&nbsp;&nbsp;&nbsp;&nbsp;> Event video with sponsor advertisement .
+                        <br/>&nbsp;&nbsp;&nbsp;&nbsp;> Advertisement on website , slide promotion until event day.
+                        <br/>&nbsp;&nbsp;&nbsp;&nbsp;> Stage display + stage announcement+ standee space.
+                        <br/>&nbsp;&nbsp;&nbsp;&nbsp;> Banner advertisement for a period of 15 days prior to the event .
+                        <br/>&nbsp;&nbsp;&nbsp;&nbsp;> Brand video can be shoot with the winning candidate.
+                        <br/>&nbsp;&nbsp;&nbsp;&nbsp;> We will promote the brand ona national level.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-11 col-md-5 col-lg-4 m-lr-auto">
+                <div class="how-bor1 ">
+                    <div class="hov-img0">
+                        <img src="{{ url_for('static', filename='res/images/collab_icon.jpg') }}" alt="IMG">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-11 col-md-6 mx-auto mt-5">
+                <h1 class="mtext-111 cl2 p-b-16 text-center">GOLD SPONSORS/CO-SPONSORS</h1>
+                <p class="stext-113 cl6 p-b-26 mt-4">
+                    This will provide your company with unprecedented coverage with the company logo being incorporated on all the promotions. <br/>
+                    On stage display, announcement, video advertisement, standee space, banner for 10days. <br/>
+                    Brand will be promoted in selected states from subtitle (runner-up) winning models.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-11 col-md-6 mx-auto mt-5">
+                <h1 class="mtext-111 cl2 p-b-16 text-center">SILVER SPONSORS</h1>
+                <p class="stext-113 cl6 p-b-26 mt-4">
+                    Company’s logo will be advertised on all the event posters , flayers and Standee space . <br/>
+                    Company logo and advertisement display at venue. <br/>
+                    Brand posters shoot will be done with show subtitle winning models.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-11 col-md-6 mx-auto mt-5">
+                <h1 class="mtext-111 cl2 p-b-16 text-center">ASSOCIATE PARTNERS</h1>
+                <p class="stext-113 cl6 p-b-26 mt-4">
+                    State level brand will be promoted.
+                    <br/>Combined standee space with other co-associates .
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block custom_scripts %}
+    <script src="{{ url_for('static', filename = 'res/js/collaboration-script.js') }}"></script>
+{% endblock %}

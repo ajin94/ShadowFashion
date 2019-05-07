@@ -2520,6 +2520,11 @@ input.num-product::-webkit-inner-spin-button {
   min-height: 199px;
 }
 
+.size-75 {
+  width: 100%;
+  min-height: 74px;
+}
+
 .size-121 {
   width: 100%;
   height: 46px;
@@ -3329,3 +3334,11 @@ input.num-product::-webkit-inner-spin-button {
   }
 
 }
+
+
+
+#doubt{
+    border: solid 1px #8080804d;
+    border-radius: 8px;
+    padding: 8px;
+    }
