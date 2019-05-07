@@ -115,13 +115,11 @@
 								<a href="{{ url_for('aboutus') }}">About</a>
 							</li>
 
-							<li class="{{ 'active-menu' if active_page == 'contact' else '' }}">
+							<li class="{{ 'active-menu' if active_page in ['contact','collaboration'] else '' }}">
 								<a href="#">Contact</a>
 								<ul class="sub-menu">
 									<li><a href="{{ url_for('contact')}}">Contact</a></li>
-									<li class="{{ 'active-menu' if active_page == 'collaboration' else '' }}">
-										<a href="{{ url_for('collaboration') }}">Collaboration</a>
-									</li>
+									<li><a href="{{ url_for('collaboration') }}">Collaboration</a></li>
 								</ul>
 							</li>
 						</ul>
