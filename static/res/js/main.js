@@ -91,6 +91,12 @@
         })
     }
 
+    var menu_click_sub = $('.sub_from_menu');
+    $(menu_click_sub).on('click', function(){
+        $(this).parent().find('.sub-menu-m').slideToggle();
+        $(this).toggleClass('turn-arrow-main-menu-m');
+    })
+
     $(window).resize(function(){
         if($(window).width() >= 992){
             if($('.menu-mobile').css('display') == 'block') {
