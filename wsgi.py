@@ -1,4 +1,4 @@
-from server import sfapp
+from server import sfapp as application
 
 if __name__ == "__main__":
-    sfapp.run()
+    application.run()
