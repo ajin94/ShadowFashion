@@ -368,7 +368,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 .main-menu > li > a {
   font-family: Poppins-Medium;
-  font-size: 14px;
+  font-size: 17px;
   color: #333;
   padding: 5px 0px;
   transition: all 0.4s;
@@ -737,7 +737,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 .main-menu-m > li > a {
   font-family: Poppins-Medium;
-  font-size: 14px;
+  font-size: 16px;
   color: white;
   line-height: 2.8;
   padding: 8px 20px 8px 20px;
@@ -2172,7 +2172,7 @@ input.num-product::-webkit-inner-spin-button {
 
 .stext-106 {
   font-family: Poppins-Regular;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.2;
 }
 
@@ -2215,7 +2215,7 @@ input.num-product::-webkit-inner-spin-button {
 
 .stext-113 {
   font-family: Poppins-Light;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.7857;
 }
 

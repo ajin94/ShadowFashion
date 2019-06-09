@@ -506,22 +506,22 @@
                 </div>
 				<p class="text-danger" id="invalid_credentials" style="display:none;"><span class="fa fa-warning"></span> INVALID Email or Password. Try Again !</p>
                 <div class="modal-body">
-                    <form id="login_form">
-                        <div class="form-group">
-                            <label for="email`">User Name or Email address</label>
-                            <input type="email" class="form-control" id="email" name="uname_or_email"
-								   aria-describedby="emailHelp" placeholder="Enter email or user name">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password"
-								   name="account_password" placeholder="Password">
-                        </div>
-                        <div class="w-100 text-right">
-							<p class="text-left"><a href="{{ url_for('signup') }}">Forgot Password ! </a> | New user ? <a href="{{ url_for('signup') }}">SignUp.</a></p>
-                            <button type="button" class="btn btn-primary" id="login_button">Login</button>
-                        </div>
-                    </form>
+						<form id="login_form">
+							<div class="form-group">
+								<label for="email`">User Name or Email address</label>
+								<input type="email" class="form-control" id="email" name="uname_or_email"
+									   aria-describedby="emailHelp" placeholder="Enter email or user name">
+							</div>
+							<div class="form-group">
+								<label for="password">Password</label>
+								<input type="password" class="form-control" id="password"
+									   name="account_password" placeholder="Password">
+							</div>
+							<div class="w-100 text-right">
+								<p class="text-left"><a href="{{ url_for('signup') }}">Forgot Password ! </a> | New user ? <a href="{{ url_for('signup') }}">SignUp.</a></p>
+								<button type="button" class="btn btn-primary" id="login_button">Login</button>
+							</div>
+						</form>
                 </div>
             </div>
         </div>
