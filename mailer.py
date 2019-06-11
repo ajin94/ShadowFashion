@@ -13,7 +13,7 @@ class Mailer:
     def send_email_to_client(self):
         msg = MIMEMultipart()
         msg.set_unixfrom('author')
-        msg['From'] = self.to_address
+        msg['From'] = self.from_address
         msg['To'] = self.to_address
         msg['Subject'] = 'simple email in python'
         message = self.message
