@@ -6,6 +6,8 @@ from flask_wtf.csrf import CsrfProtect
 from connections import get_connection
 import traceback
 
+from mailer import Mailer
+
 sfapp = Flask(__name__)
 sfapp.secret_key = '6wfwef6ASDW676w6QDWD6748wd((FD'
 sfapp.config['SESSION_TYPE'] = 'filesystem'
@@ -179,6 +181,10 @@ def user_signup():
     else:
         session['user_name'] = form_data['uname']
         session['points'] = 100
+        to_address = form_data['email']
+        message = "Welcome {} {} Thanks for signing up on Shadow Fashion. " \
+                  "100 points have been credited your account !".format(form_data['fname'], form_data['sname'])
+        Mailer(to_address, message)
         return json.dumps({"status": "OK"})
 
 
@@ -227,5 +233,5 @@ def check_uname_duplicate():
         return json.dumps({'status': 'ERROR'})
     return json.dumps({'status': 'OK'})
 
-# if __name__ == "__main__":
-#     sfapp.run()
+if __name__ == "__main__":
+    sfapp.run()
