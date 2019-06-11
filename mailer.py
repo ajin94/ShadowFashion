@@ -15,7 +15,7 @@ class Mailer:
         msg.set_unixfrom('author')
         msg['From'] = self.from_address
         msg['To'] = self.to_address
-        msg['Subject'] = 'simple email in python'
+        msg['Subject'] = 'Welcome to ShadowFashion'
         message = self.message
         msg.attach(MIMEText(message))
 
